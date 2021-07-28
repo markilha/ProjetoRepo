@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Container, Form, SumitButton, List, DeleteButton } from './styles';
 import { FaGithub, FaPlus, FaSpinner, FaBars, FaTrash } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import api from '../../services/api'
 
 
@@ -19,14 +20,10 @@ export default function Main() {
         }
     },[]);
 
-
-
     //Salvar alterações
     useEffect(()=>{
         localStorage.setItem('repos',JSON.stringify(respositorios));
     },[respositorios]);
-
-
 
     const handleSubmit = useCallback((e) => {
         e.preventDefault();
@@ -45,7 +42,6 @@ export default function Main() {
                 if (hasRepo) {
                     throw new Error('Repositorio Duplicado');
                 }
-
 
                 const data = {
                     name: response.data.full_name,
@@ -103,9 +99,9 @@ export default function Main() {
                             </DeleteButton>
                             {repo.name}
                         </span>
-                        <a href="*">
+                        <Link to={`/repositorio/${encodeURIComponent(repo.name)}`}>
                             <FaBars size={20} />
-                        </a>
+                        </Link>
                     </li>
                 ))}
 
