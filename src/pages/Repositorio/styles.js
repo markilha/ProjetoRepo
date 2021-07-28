@@ -98,7 +98,7 @@ export const IssuesList = styled.ul`
                 font-size: 12px;
                 font-weight: 600;
                 padding: 5px 7px;
-                margin-left: 10px;
+                margin-left: 15px;
 
             }
 
